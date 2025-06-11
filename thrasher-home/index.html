@@ -68,6 +68,24 @@ header.top-bar{
 }
 
 /* ======  PRIMARY NAV  ====== */
+.nav-toggle {
+  display: none; /* Hidden by default on desktop */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001; /* Ensure it's above other nav elements if needed */
+}
+
+.nav-toggle .hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--brand-dark); /* Or #003a5d if you prefer direct value */
+  margin: 4px 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
 nav.main-nav{
   background:#e9f1f5;
   padding:10px 32px;
@@ -192,6 +210,17 @@ button.next{
 
 /* ======  RESPONSIVE TOUCHES  ====== */
 @media (max-width:960px){
+  nav.main-nav {
+    position: relative; /* Needed for absolute positioning of .nav-toggle within it */
+  }
+
+  .nav-toggle {
+    display: block; /* Show the button on mobile */
+    position: absolute; /* Or relative depending on how nav.main-nav is styled */
+    top: 10px; /* Adjust as needed for vertical positioning */
+    right: 10px; /* Adjust as needed for horizontal positioning */
+  }
+
   .hero{grid-template-columns:1fr;}
   .hero-form{max-width:600px;margin:0 auto;}
   header.top-bar{flex-wrap:wrap;}
@@ -241,23 +270,62 @@ button.next{
   }
 
   nav.main-nav ul {
-    flex-direction: column; /* Stack the list items vertically */
-    align-items: center; /* Center the items if they don't take full width */
+    /* Keep existing flex properties for when it's shown */
+    flex-direction: column;
+    align-items: center; /* Or stretch if full-width links are preferred */
+
+    /* New styles for hamburger functionality */
+    display: none; /* Hide by default on mobile, JS will toggle this */
+    position: absolute;
+    top: 100%; /* Position it right below the nav bar (assuming nav.main-nav height) or from top:0 for full screen */
+    left: 0;
+    width: 100%;
+    background-color: var(--brand-light); /* Or #e9f1f5, or a darker color for contrast */
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 1000; /* Ensure it's above content below but below .nav-toggle if toggle needs to be above it */
   }
 
   nav.main-nav li {
-    width: 100%; /* Make list items take full width */
-    text-align: center; /* Center the text in each list item */
-    margin-bottom: 8px; /* Add some space between stacked nav items */
+    /* Ensure these styles are compatible with the new ul display */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0; /* Remove individual margins if padding is on links */
   }
 
-  nav.main-nav li:last-child {
-    margin-bottom: 0; /* Remove bottom margin from the last nav item */
+  nav.main-nav li:not(:last-child) {
+      border-bottom: 1px solid rgba(0,0,0,0.1); /* Add separators */
   }
 
   nav.main-nav a {
-    padding: 10px 0; /* Add some vertical padding to make them easier to tap */
-    display: block; /* Ensure the link takes up the full width of the li */
+    padding: 15px 0; /* Generous padding for tap targets */
+    display: block;
+    width: 100%;
+    color: var(--brand-dark); /* Ensure text color is set, e.g. #003a5d */
+    text-decoration: none; /* Ensure no underline */
+  }
+
+  nav.main-nav a:hover {
+    background-color: rgba(0,0,0,0.05); /* Subtle hover effect */
+    color: var(--brand-blue);
+  }
+
+  /* Show the navigation UL when it has the active class */
+  nav.main-nav ul.nav-ul-active {
+    display: flex; /* Or 'block', but 'flex' was used for its column layout before hiding */
+  }
+
+  /* Style the hamburger button when it's active (e.g., transform to an 'X') */
+  .nav-toggle.nav-toggle-active .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle.nav-toggle-active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.nav-toggle-active .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .form-group {
@@ -389,6 +457,11 @@ button.next{
 
   <!-- ======  PRIMARY NAV  ====== -->
   <nav class="main-nav">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
     <ul>
       <li><a href="#">Foundation Repair</a></li>
       <li><a href="#">Concrete Repair</a></li>
@@ -480,5 +553,24 @@ button.next{
   </section>
 
 </div><!-- /.canvas -->
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const navUl = document.querySelector('nav.main-nav ul');
+
+if (navToggle && navUl) {
+  navToggle.addEventListener('click', () => {
+    // Toggle a class on the nav UL to show/hide it
+    navUl.classList.toggle('nav-ul-active');
+
+    // Toggle aria-expanded attribute for accessibility
+    const isExpanded = navUl.classList.contains('nav-ul-active');
+    navToggle.setAttribute('aria-expanded', isExpanded);
+
+    // Optional: Toggle a class on the button itself for active state styling (e.g., to change to an 'X')
+    navToggle.classList.toggle('nav-toggle-active');
+  });
+}
+</script>
 </body>
 </html>
