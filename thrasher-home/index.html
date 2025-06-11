@@ -69,7 +69,7 @@ header.top-bar{
 
 /* ======  PRIMARY NAV  ====== */
 nav.main-nav{
-  background:var(--brand-light);
+  background:#e9f1f5;
   padding:10px 32px;
 }
 .main-nav ul{
@@ -78,6 +78,10 @@ nav.main-nav{
   list-style:none;
   font-weight:600;
   font-size:14px;
+}
+.main-nav a{
+  color:#003a5d;
+  text-decoration:none;
 }
 .main-nav a:hover{color:var(--brand-blue);}
 
@@ -191,6 +195,170 @@ button.next{
   .hero{grid-template-columns:1fr;}
   .hero-form{max-width:600px;margin:0 auto;}
   header.top-bar{flex-wrap:wrap;}
+
+  header.top-bar > * {
+    width: 100%; /* Make all direct children take full width */
+    margin-bottom: 10px; /* Add some space between stacked items */
+    display: flex; /* Use flex to help center or align items if they are containers themselves */
+    flex-direction: column; /* Stack items within these containers if needed */
+    align-items: center; /* Center content like logo, phone, button text */
+  }
+
+  /* Remove bottom margin from the last child */
+  header.top-bar > *:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Specific adjustments for find-local if its children need to stack */
+  .find-local {
+    flex-direction: column; /* Stack label, input, and button */
+    align-items: stretch; /* Make input and button take full width of this container */
+  }
+
+  .find-local input,
+  .find-local button {
+    width: 100%; /* Make input and button full width */
+    margin-bottom: 5px; /* Space them out */
+  }
+
+  .find-local label {
+    margin-bottom: 5px; /* Space out label */
+    text-align: center; /* Center the label text */
+  }
+
+  .find-local button:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Ensure the logo is centered */
+  .top-bar .logo {
+    justify-content: center;
+  }
+
+  /* Ensure phone items are centered */
+  .phone {
+   justify-content: center;
+  }
+
+  nav.main-nav ul {
+    flex-direction: column; /* Stack the list items vertically */
+    align-items: center; /* Center the items if they don't take full width */
+  }
+
+  nav.main-nav li {
+    width: 100%; /* Make list items take full width */
+    text-align: center; /* Center the text in each list item */
+    margin-bottom: 8px; /* Add some space between stacked nav items */
+  }
+
+  nav.main-nav li:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last nav item */
+  }
+
+  nav.main-nav a {
+    padding: 10px 0; /* Add some vertical padding to make them easier to tap */
+    display: block; /* Ensure the link takes up the full width of the li */
+  }
+
+  .form-group {
+    flex-direction: column; /* Stack the items within a form group (e.g., first name and last name inputs) */
+    gap: 0; /* Remove the horizontal gap, as items are stacking */
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; /* Ensure inputs take full width when stacked */
+    margin-bottom: 12px; /* Add some space between stacked input fields */
+  }
+
+  /* Remove bottom margin from the last input in a form group if it's the only one or last one */
+  .form-group input:last-child,
+  .form-group select:last-child,
+  .form-group textarea:last-child {
+    margin-bottom: 0;
+  }
+
+  .features {
+    flex-direction: column; /* Stack the feature items vertically */
+    align-items: center; /* Center the feature items horizontally */
+  }
+
+  .feature {
+    margin-bottom: 24px; /* Add space between stacked feature items */
+    max-width: 300px; /* Optionally constrain max-width if they become too wide when centered */
+  }
+
+  .features .feature:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last feature item */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Reduce padding on the main canvas/wrapper */
+  .canvas {
+    padding-left: 16px; /* Original was 32px at larger sizes via header/nav/hero padding */
+    padding-right: 16px;
+  }
+
+  /* Adjust padding for sections to be less generous */
+  header.top-bar,
+  nav.main-nav,
+  .hero,
+  .features {
+    padding-left: 0; /* Padding will be on .canvas */
+    padding-right: 0;
+  }
+
+  /* Further reduce padding for the hero form itself */
+  .hero-form {
+    padding: 16px; /* Original was 24px */
+  }
+
+  /* Reduce hero form title size */
+  .hero-form h2 {
+    font-size: 20px; /* Original was 24px */
+  }
+
+  /* Reduce font size for phone number in top bar */
+  .phone {
+    font-size: 16px; /* Original was 18px */
+  }
+
+  /* Reduce font size for CTA button in top bar */
+  .cta-btn {
+    font-size: 13px; /* Original was 14px */
+    padding: 8px 14px; /* Slightly reduce padding */
+  }
+
+  /* Reduce font size for main navigation links */
+  .main-nav ul {
+    font-size: 13px; /* Original was 14px */
+  }
+
+  /* Reduce font size for feature item titles and text */
+  .feature strong {
+    font-size: 15px; /* Original was 16px */
+  }
+  .feature span {
+    font-size: 13px; /* Original was 14px for the text part */
+  }
+
+  /* Reduce gap for find-local elements */
+  .find-local input,
+  .find-local button,
+  .find-local label {
+    margin-bottom: 3px; /* Was 5px */
+  }
+  header.top-bar > * {
+    margin-bottom: 8px; /* Was 10px */
+  }
+  nav.main-nav li {
+    margin-bottom: 6px; /* Was 8px */
+  }
+  .feature {
+    margin-bottom: 18px; /* Was 24px */
+  }
 }
 </style>
 </head>
