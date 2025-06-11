@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thrasher Foundation Repair – Mock‑up</title>
+
+<!-- ======  BASIC THEME VARIABLES  ====== -->
+<style>
+:root{
+  --brand-blue:#0076c6;
+  --brand-dark:#003c64;
+  --brand-light:#f5f8fc;
+  --body-font:'Helvetica Neue',Arial,sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--body-font);color:#222;background:#fff;line-height:1.4;}
+
+/* ---  CANVAS / PAGE WRAPPER  --- */
+.canvas{max-width:1280px;margin:0 auto;}
+
+/* ======  TOP HEADER  ====== */
+header.top-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:16px 32px;
+}
+.top-bar .logo img{max-height:44px;}
+
+.find-local{display:flex;align-items:center;gap:8px;font-size:14px;}
+.find-local input{
+  padding:6px 8px;
+  border:1px solid #ccc;
+  border-radius:3px;
+  width:120px;
+}
+.find-local button{
+  padding:6px 12px;
+  background:var(--brand-blue);
+  border:0;
+  color:#fff;
+  border-radius:3px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.phone{
+  font-weight:700;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--brand-blue);
+}
+.cta-btn{
+  background:var(--brand-blue);
+  color:#fff;
+  border:0;
+  padding:8px 18px;
+  border-radius:20px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+/* ======  PRIMARY NAV  ====== */
+nav.main-nav{
+  background:var(--brand-light);
+  padding:10px 32px;
+}
+.main-nav ul{
+  display:flex;
+  gap:32px;
+  list-style:none;
+  font-weight:600;
+  font-size:14px;
+}
+.main-nav a:hover{color:var(--brand-blue);}
+
+/* ======  HERO SECTION  ====== */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:40px;
+  padding:40px 32px;
+}
+.hero-image img{
+  width:100%;
+  height:auto;
+  border-radius:4px;
+  object-fit:cover;
+}
+
+.hero-form{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:4px;
+  padding:24px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.hero-form h2{
+  font-size:24px;
+  line-height:1.3;
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+/* ---  Step tabs  --- */
+.steps{
+  display:flex;
+  margin-bottom:16px;
+  border-bottom:3px solid #e5e7eb;
+}
+.steps div{
+  flex:1;
+  text-align:center;
+  padding:6px 0;
+  font-weight:600;
+  border-bottom:3px solid transparent;
+}
+.steps .active{
+  border-color:var(--brand-blue);
+  color:var(--brand-blue);
+}
+
+/* ---  Form fields  --- */
+.form-group{
+  display:flex;
+  gap:16px;
+  margin-bottom:16px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  flex:1;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:3px;
+  font-size:14px;
+  width:100%;
+}
+textarea{resize:vertical;min-height:80px;}
+
+button.next{
+  display:block;
+  width:100%;
+  padding:10px 0;
+  background:var(--brand-blue);
+  color:#fff;
+  border:0;
+  border-radius:3px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ======  FEATURE STRIP  ====== */
+.features{
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap:32px;
+  padding:40px 32px;
+  border-top:1px solid #f0f1f2;
+}
+.feature{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:140px;
+  text-align:center;
+  font-size:14px;
+}
+.feature img{
+  width:48px;
+  height:48px;
+  margin-bottom:12px;
+}
+.feature strong{
+  font-weight:700;
+  margin-bottom:4px;
+  font-size:16px;
+}
+
+/* ======  RESPONSIVE TOUCHES  ====== */
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;}
+  .hero-form{max-width:600px;margin:0 auto;}
+  header.top-bar{flex-wrap:wrap;}
+}
+</style>
+</head>
+
+<body>
+<div class="canvas"><!-- everything is inside this “canvas” wrapper -->
+
+  <!-- ======  TOP HEADER  ====== -->
+  <header class="top-bar">
+    <div class="logo">
+      <img src="https://cdn.treehouseinternetgroup.com/cdn-cgi/image/format=auto/cms_images/107/Thrasher-Foundation-Repair_4C.png" alt="Thrasher Logo">
+    </div>
+
+    <div class="find-local">
+      <label for="zip">Find your local Thrasher</label>
+      <input id="zip" type="text" placeholder="Enter zip">
+      <button type="button">Go</button>
+    </div>
+
+    <div class="phone">
+      <!-- simple placeholder icon -->
+      <span>&#128222;</span>
+      <span>1‑888‑888‑8888</span>
+    </div>
+
+    <button class="cta-btn">Schedule a Free Estimate</button>
+  </header>
+
+  <!-- ======  PRIMARY NAV  ====== -->
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#">Foundation Repair</a></li>
+      <li><a href="#">Concrete Repair</a></li>
+      <li><a href="#">Basement Waterproofing</a></li>
+      <li><a href="#">Gutter Installation</a></li>
+      <li><a href="#">Crawl Space Repair</a></li>
+      <li><a href="#">About Thrasher</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======  HERO  ====== -->
+  <section class="hero">
+    <!-- Hero Photo -->
+    <div class="hero-image">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/thrasher_polylevel_082523-4.png" alt="Technician greeting homeowner">
+    </div>
+
+    <!-- Right‑hand Form -->
+    <aside class="hero-form">
+      <h2>Peace of Mind Starts with a<br>Free Inspection from Thrasher.</h2>
+
+      <!-- step “tabs” -->
+      <div class="steps">
+        <div class="active">Step&nbsp;1</div>
+        <div>Step&nbsp;2</div>
+        <div>Step&nbsp;3</div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="First Name">
+          <input type="text" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email Address">
+          <input type="tel"  placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+          <select>
+            <option selected disabled>I'd like an inspection for…</option>
+            <option>Foundation</option>
+            <option>Basement</option>
+            <option>Concrete</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Tell us what's going on in your home"></textarea>
+        </div>
+        <div class="form-group">
+          <select>
+            <option selected disabled>How did you hear about us?</option>
+            <option>Google Search</option>
+            <option>Friend / Family</option>
+            <option>TV / Radio</option>
+          </select>
+        </div>
+        <button type="submit" class="next">Next</button>
+      </form>
+    </aside>
+  </section>
+
+  <!-- ======  FEATURE STRIP  ====== -->
+  <section class="features">
+    <div class="feature">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/Home_Page_Icon_Award.png" alt="">
+      <strong>Awarded for Ethics</strong>
+      <span>6× BBB Torch Award Winner</span>
+    </div>
+    <div class="feature">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/Home_Page_Icon_Truck.png" alt="">
+      <strong>50 Years Trusted</strong>
+      <span>By Families Across the Midwest</span>
+    </div>
+    <div class="feature">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/Home_Page_Icon_BBB.png" alt="">
+      <strong>A+ Rating</strong>
+      <span>Proven Trust&nbsp;&amp;&nbsp;Performance</span>
+    </div>
+    <div class="feature">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/Home_Page_Icon_Review.png" alt="">
+      <strong>35,762+</strong>
+      <span>5‑Star Reviews</span>
+    </div>
+    <div class="feature">
+      <img src="https://cdn.treehouseinternetgroup.com/cms_images/107/Home_Page_Icon_House.png" alt="">
+      <strong>Premium Solutions</strong>
+      <span>Customized for Every Home</span>
+    </div>
+  </section>
+
+</div><!-- /.canvas -->
+</body>
+</html>
